@@ -1,16 +1,16 @@
-# Single Value Decomposition port to js
+# Singular Value Decomposition port to js
 
 This procedure computes the singular values and complete orthogonal decomposition of a real rectangular matrix A:
+
 ```ts
 A = U * diag(q) * V(t), U(t) * U = V(t) * V = I
 ```
 
 where the arrays `a`, `u`, `v`, `q` represent `A`, `U`, `V`, `q` respectively. The actual parameters corresponding to `a`, `u`, `v` may
 all be identical unless `withu = withv = true`. In this case, the actual parameters corresponding to `u` and `v` must
-differ. 
+differ.
 
 `m >= n` is assumed (with `m = a.length` and `n = a[0].length`)
-
 
 ## Usage:
 
@@ -32,17 +32,18 @@ let { u, v, q } = SVD(a);
 ## `SVD(a [, withu, withv, eps])`
 
 ### Parameters
+
 ```ts
 {
   // Represents the matrix A to be decomposed
   a: number[][]
-  
+
   // if U is desired `false` otherwise
   withu: boolean = true,
-  
+
   // if V is desired `false` otherwise
   withv: boolean = true,
-  
+
   // A constant used in the test for convergence; should not be smaller than the machine precision
   eps: number = Math.pow(2, -52)
 }
@@ -54,10 +55,10 @@ let { u, v, q } = SVD(a);
 {
   // Represents the matrix U with orthonormalized columns (`if withu is true` otherwise `u` is used as a working storage)
   u: number[][],
-  
+
   //Represents the orthogonal matrix V (`if withv === true`, otherwise `v` is not used)
   v: number[][],
-  
+
   // A vector holding the singular values of `A`; they are non-negative but not necessarily ordered in decreasing sequence
   q: number[]
 }

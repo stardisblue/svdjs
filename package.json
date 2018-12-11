@@ -1,5 +1,5 @@
 {
-  "name": "svdjs",
+  "name": "svd-finder",
   "version": "0.1.0",
   "description": "singular value decomposition",
   "main": "dist/index.js",
