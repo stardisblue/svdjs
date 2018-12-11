@@ -1,0 +1,26 @@
+{
+  "name": "svdjs",
+  "version": "0.1.0",
+  "description": "singular value decomposition",
+  "main": "dist/index.js",
+  "repository": "https://github.com/stardisblue/svdjs",
+  "author": "Fati CHEN <chen@lirmm.fr>",
+  "license": "MIT",
+  "scripts": {
+    "commit": "mocha --reporter nyan -r ts-node/register test/**/*.ts && tsc && git commit",
+    "build": "tsc",
+    "test": "mocha --reporter nyan -r ts-node/register test/**/*.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mathjs": "^4.4.4",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.12",
+    "chai": "^4.2.0",
+    "mathjs": "^5.4.0",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  }
+}
