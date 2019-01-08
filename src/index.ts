@@ -17,6 +17,15 @@ interface SVDResult {
   v: number[][];
 }
 
+interface SVDParameters {
+  /** if U is desired */
+  u: boolean;
+  /** if V is desired */
+  v: boolean;
+  /** constant used in the test for convergence; should not be smaller than the machine precision */
+  eps: number;
+}
+
 /** SVD procedure as explained in "Singular Value Decomposition and Least Squares Solutions. By G.H. Golub et al."
  *
  * This procedure computes the singular values and complete orthogonal decomposition of a real rectangular matrix A:
@@ -28,18 +37,17 @@ interface SVDResult {
  * differ. `m >= n` is assumed (with `m = a.length` and `n = a[0].length`)
  *
  *  @param a  Represents the matrix A to be decomposed
- *  @param withu if U is desired `false` otherwise
- *  @param withv if V is desired `false` otherwise
- *  @param eps A constant used in the test for convergence; should not be smaller than the machine precision
+ *  @param options SVD options
  *
  * @returns {SVDResult} the result of the svd
  */
-export default function SVD(
-  a: number[][],
-  withu: boolean = true,
-  withv: boolean = true,
-  eps: number = Math.pow(2, -52)
-): SVDResult {
+export default function SVD(a: number[][], options?: SVDParameters): SVDResult {
+  let { u: withu, v: withv, eps }: SVDParameters = {
+    u: true,
+    v: true,
+    eps: Math.pow(2, -52),
+    ...options
+  };
   const tol = 1e-64 / eps;
 
   // throw error if a is not defined
