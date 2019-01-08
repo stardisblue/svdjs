@@ -84,7 +84,7 @@ describe("SVD tests", () => {
       [4, 5, 0, -2, 2]
     ];
 
-    let { v, q } = SVD(a, false, false);
+    let { v, q } = SVD(a, { u: false, v: false });
 
     assert.approximately(q[0], Math.sqrt(1248), 1e-4);
     assert.approximately(q[1], 0, 1e-4);
