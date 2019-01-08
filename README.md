@@ -29,20 +29,24 @@ let a = [
 let { u, v, q } = SVD(a);
 ```
 
-## `SVD(a [, withu, withv, eps])`
+## `SVD(a [options])`
 
 ### Parameters
 
 ```ts
-{
-  // Represents the matrix A to be decomposed
-  a: number[][]
+// Represents the matrix A to be decomposed
+a: number[][]
+```
 
+#### Options
+
+```ts
+{
   // if U is desired `false` otherwise
-  withu: boolean = true,
+  u: boolean = true,
 
   // if V is desired `false` otherwise
-  withv: boolean = true,
+  v: boolean = true,
 
   // A constant used in the test for convergence; should not be smaller than the machine precision
   eps: number = Math.pow(2, -52)
@@ -56,7 +60,7 @@ let { u, v, q } = SVD(a);
   // Represents the matrix U with orthonormalized columns (`if withu is true` otherwise `u` is used as a working storage)
   u: number[][],
 
-  //Represents the orthogonal matrix V (`if withv === true`, otherwise `v` is not used)
+  //Represents the orthogonal matrix V (`if u === true`, otherwise `v` is not used)
   v: number[][],
 
   // A vector holding the singular values of `A`; they are non-negative but not necessarily ordered in decreasing sequence
