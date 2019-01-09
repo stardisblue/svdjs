@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 /** SVD procedure as explained in "Singular Value Decomposition and Least Squares Solutions. By G.H. Golub et al."
  *
@@ -11,16 +22,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * differ. `m >= n` is assumed (with `m = a.length` and `n = a[0].length`)
  *
  *  @param a  Represents the matrix A to be decomposed
- *  @param withu if U is desired `false` otherwise
- *  @param withv if V is desired `false` otherwise
- *  @param eps A constant used in the test for convergence; should not be smaller than the machine precision
+ *  @param options SVD options
  *
  * @returns {SVDResult} the result of the svd
  */
-function SVD(a, withu, withv, eps) {
-    if (withu === void 0) { withu = true; }
-    if (withv === void 0) { withv = true; }
-    if (eps === void 0) { eps = Math.pow(2, -52); }
+function SVD(a, options) {
+    var _a = __assign({ u: true, v: true, eps: Math.pow(2, -52) }, options), withu = _a.u, withv = _a.v, eps = _a.eps;
     var tol = 1e-64 / eps;
     // throw error if a is not defined
     if (!a) {

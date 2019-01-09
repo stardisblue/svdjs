@@ -76,7 +76,7 @@ describe("SVD tests", function () {
             [2, -6, 6, 5, 1],
             [4, 5, 0, -2, 2]
         ];
-        var _a = src_1.default(a, false, false), v = _a.v, q = _a.q;
+        var _a = src_1.default(a, { u: false, v: false }), v = _a.v, q = _a.q;
         chai_1.assert.approximately(q[0], Math.sqrt(1248), 1e-4);
         chai_1.assert.approximately(q[1], 0, 1e-4);
         chai_1.assert.approximately(q[2], 20, 1e-4);
